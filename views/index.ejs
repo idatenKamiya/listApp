@@ -8,7 +8,7 @@
   </head>
   <body>
     <header>
-      <a class="header-logo">LIST</a>
+      <a href="/" class="header-logo">LIST</a>
     </header>
     <div class="container">
       <div class="container-header">
@@ -19,19 +19,25 @@
           <span class="id-column">ID</span>
           <span>Item</span>
         </div>
+
+        <% const items = [
+            {id: 1, name: 'tomatoes'}; %>
+            {id: 2, name: 'tomatoes'}; %>
+            {id: 3, name: 'tomatoes'}; %>
+        ]; %> 
+
         <ul class="table-body">
-          <li>
-            <span class="id-column">1</span>
-            <span class="name-column">potatoes</span>
-          </li>
-          <li>
-            <span class="id-column">2</span>
-            <span class="name-column">carrots</span>
-          </li>
-          <li>
-            <span class="id-column">3</span>
-            <span class="name-column">onions</span>
-          </li>
+            <!-- Use forEach to print the elements of the items array -->
+            <% items.forEach((item) => { %>
+                <li>
+                    <span class="id-column">
+                        <%= item.id %>
+                    </span>
+                    <span class="name-column">
+                        <%= item.name %>
+                    </span>
+                  </li>
+            <% }); %>        
         </ul>
       </div>
     </div>
