@@ -13,6 +13,7 @@
     <div class="container">
       <div class="container-header">
         <h1>Shopping List</h1>
+        <a href="/new" class="new-button">+ Add item</a>
       </div>
       <div class="index-table-wrapper">
         <div class="table-head">
@@ -20,24 +21,17 @@
           <span>Item</span>
         </div>
 
-        <% const items = [
-            {id: 1, name: 'tomatoes'}; %>
-            {id: 2, name: 'tomatoes'}; %>
-            {id: 3, name: 'tomatoes'}; %>
-        ]; %> 
-
+        
         <ul class="table-body">
             <!-- Use forEach to print the elements of the items array -->
             <% items.forEach((item) => { %>
                 <li>
-                    <span class="id-column">
-                        <%= item.id %>
-                    </span>
-                    <span class="name-column">
-                        <%= item.name %>
-                    </span>
-                  </li>
-            <% }); %>        
+                    <div class="item-data">
+                        <span class="id-column"><%= item.id %></span>
+                        <span class="name-column"><%= item.name %></span>
+                    </div>    
+                </li>
+            <% }) %>        
         </ul>
       </div>
     </div>
