@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
 const mysql = require('mysql');
+const app = express();
 
 app.use(express.static('public'));
 //Get the values from submitted form
@@ -54,6 +54,37 @@ app.post('/create', (req, res) => {
       }
     );
   });
+
+  app.post('/delete/:id', (req, res) => {
+    connection.query(
+    //console.log(req.params.id);
+      'DELETE FROM items WHERE id = ?',
+      [req.params.id],
+      (error, results) => {
+        res.redirect('/index');
+      });
+  });
+
+// Add a route for the edit page
+app.get('/edit/:id', (req, res) => {
+  connection.query(
+    'SELECT * FROM items WHERE id = ?',
+    [req.params.id],
+    (error, results) => {
+      res.render('edit.ejs', {item: results[0]});
+    }
+  );
+});
+
+app.post('/update/:id', (req, res) => {
+  connection.query(
+    'UPDATE items SET name = ? WHERE id = ?',
+    [req.body.itemName, req.params.id],
+    (error, results) => {
+      res.redirect('/index');
+    }
+  );
+});
 
 
 app.listen(3000);
