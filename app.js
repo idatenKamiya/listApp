@@ -55,15 +55,15 @@ app.post('/create', (req, res) => {
     );
   });
 
-  app.post('/delete/:id', (req, res) => {
-    connection.query(
-    //console.log(req.params.id);
-      'DELETE FROM items WHERE id = ?',
-      [req.params.id],
-      (error, results) => {
-        res.redirect('/index');
-      });
-  });
+app.post('/delete/:id', (req, res) => {
+  connection.query(
+  //console.log(req.params.id);
+    'DELETE FROM items WHERE id = ?',
+    [req.params.id],
+    (error, results) => {
+      res.redirect('/index');
+    });
+});
 
 // Add a route for the edit page
 app.get('/edit/:id', (req, res) => {
